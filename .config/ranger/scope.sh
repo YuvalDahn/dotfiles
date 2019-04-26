@@ -95,6 +95,12 @@ handle_extension() {
 	   echo '----- Database Format ----'
            echo '.fullschema --indent' | sqlite3 --readonly ${FILE_PATH} | grep -v '\*'
 	   exit 5;;
+
+       # JSON
+       json)
+           jq --color-output . "${FILE_PATH}" && exit 5
+           python -m json.tool -- "${FILE_PATH}" && exit 5
+           ;;
     esac
 }
 
