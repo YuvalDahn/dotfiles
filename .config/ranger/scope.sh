@@ -83,6 +83,18 @@ handle_extension() {
             lynx -dump -- "${FILE_PATH}" && exit 5
             elinks -dump "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+	
+       # Word Document (docx)
+       docx)
+           soffice --cat ${FILE_PATH} && exit 5
+           exit 1;;
+
+       # Sqlite3 databases
+       db|sqlite)
+           echo '----- File Type Classification -----' && file --dereference --brief -- "${FILE_PATH}"
+	   echo '----- Database Format ----'
+           echo '.fullschema --indent' | sqlite3 --readonly ${FILE_PATH} | grep -v '\*'
+	   exit 5;;
     esac
 }
 
@@ -110,19 +122,20 @@ handle_image() {
             exit 7;;
 
         # Video
-        # video/*)
-        #     # Thumbnail
-        #     ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
-        #     exit 1;;
+        video/*)
+            # Thumbnail
+            ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
+            exit 1;;
+
         # PDF
-        # application/pdf)
-        #     pdftoppm -f 1 -l 1 \
-        #              -scale-to-x 1920 \
-        #              -scale-to-y -1 \
-        #              -singlefile \
-        #              -jpeg -tiffcompression jpeg \
-        #              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
-        #         && exit 6 || exit 1;;
+        application/pdf)
+            pdftoppm -f 1 -l 1 \
+                     -scale-to-x 1920 \
+                     -scale-to-y -1 \
+                     -singlefile \
+                     -jpeg -tiffcompression jpeg \
+                     -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+                && exit 6 || exit 1;;
 
         # Preview archives using the first image inside.
         # (Very useful for comic book collections for example.)
