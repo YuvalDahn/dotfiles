@@ -8,7 +8,8 @@ export HISTFILESIZE=
 export HISTSIZE=
 
 # Aliases
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
+alias ll='ls -al --color --group-directories-first | less -Fr'
 alias cdG='cd ~/Documents/Magshimim/Advanced_Programming/Gallery/'
 alias e="exit"
 alias r="ranger"
@@ -21,6 +22,9 @@ alias PS1-short="PS1=\"\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u
 
 # PATH
 export PATH=$PATH:$HOME/.scripts
+
+#Parameters for less: F - quit if not full screen, r - display colors and all chrachters
+export LESS="-Fr"
 
 # Bi-Directional RTL support - requieres bicon
 # hack to launch bicon if not launched
