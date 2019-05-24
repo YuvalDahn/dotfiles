@@ -14,13 +14,7 @@ export HISTFILESIZE=
 export HISTSIZE=
 
 # Aliases
-alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -al --color --group-directories-first | less -Fr'
-alias cdG='cd ~/Documents/Magshimim/Advanced_Programming/Gallery/'
-alias e="exit"
-alias r="ranger"
-alias cl="clear"
-alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles-git/ --work-tree=$HOME '
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 

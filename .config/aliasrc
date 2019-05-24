@@ -1,0 +1,14 @@
+#!/bin/sh
+alias ls="ls -h --color=auto --group-directories-first" \
+      ll='ls -al --color --group-directories-first | less -r' \
+      grep="grep --color=auto" \
+      diff="diff --color=auto" \
+      e="exit" \
+      r="ranger" \
+      cl="clear" \
+      dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ' \
+      dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ' \
+      g="git" \
+      v="$EDITOR" \
+      refshort="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+      ref="source ~/.bashrc"
