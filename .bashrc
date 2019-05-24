@@ -3,6 +3,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#enable vim-mode in terminal
+set -o vi
+
 # unlimited history file
 export HISTFILESIZE=
 export HISTSIZE=
