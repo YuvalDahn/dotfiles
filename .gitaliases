@@ -1,0 +1,34 @@
+# add to ~/.gitconfig
+#[include]
+#	path = ~/.gitaliases
+[alias]
+	s = status
+	ss = status -s
+	a = add
+	ai = add --interactive
+	co = checkout
+	cob = checkout -b
+	br = branch
+	cm = commit
+	amend = commit --amend
+	cma = commit --amend
+	cmae = commit --amend --no-edit
+	po = push origin
+	plo = pull origin
+	l = log
+	lo = log --oneline
+	st = stash
+	stl = stash list
+	sta = stash apply
+	# list all aliases
+	la = "!git config -l | grep alias | cut -c 7-"
+	lasttag = describe --tags --abbrev=0
+	d = diff
+	wd = diff --word-diff
+	dc = diff --cached
+	# diff last commit
+	dlc = diff --cached HEAD^
+	h = help
+	ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=relative
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [a:%an,c:%cn]" --decorate --numstat
+	who = shortlog -n -s --no-merges
