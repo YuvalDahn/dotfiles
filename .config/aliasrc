@@ -11,4 +11,7 @@ alias ls="ls -h --color=auto --group-directories-first" \
       g="git" \
       v="$EDITOR" \
       refshort="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-      ref="source ~/.bashrc"
+      ref="source ~/.bashrc" \
+      bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc" \
+      bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc" \
+      al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc" \
