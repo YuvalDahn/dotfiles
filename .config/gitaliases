@@ -1,6 +1,6 @@
 # add to ~/.gitconfig
 #[include]
-#	path = ~/.gitaliases
+#	path = ~/.config/gitaliases
 [alias]
 	s = status
 	ss = status -s
