@@ -3,6 +3,7 @@ h	~/
 d	~/Documents
 D	~/Downloads
 p	~/Pictures
+a	~/AUR
 mn	/mnt
 cf	~/.config
 cfr	~/.config/ranger
