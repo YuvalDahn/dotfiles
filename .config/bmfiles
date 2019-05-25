@@ -1,0 +1,5 @@
+bf	~/.config/bmfiles
+bd	~/.config/bmdirs
+brc	~/.bashrc
+al	~/.config/aliasrc
+# zrc	~/.zshrc

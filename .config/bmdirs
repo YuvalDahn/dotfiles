@@ -1,0 +1,10 @@
+# You can add comments to these files with #
+h	~/
+d	~/Documents
+D	~/Downloads
+p	~/Pictures
+mn	/mnt
+cf	~/.config
+cfr	~/.config/ranger
+sc	~/.scripts
+t	/tmp
