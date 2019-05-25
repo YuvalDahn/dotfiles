@@ -13,8 +13,12 @@
 	amend = commit --amend
 	cma = commit --amend
 	cmae = commit --amend --no-edit
+	p = push
+	pf = push --force
 	po = push origin
+	pl = pull
 	plo = pull origin
+	f = fetch
 	l = log
 	lo = log --oneline
 	st = stash
