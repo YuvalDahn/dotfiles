@@ -1,17 +1,33 @@
 #!/bin/sh
-alias ls="ls -h --color=auto --group-directories-first" \
-      ll='ls -al --color --group-directories-first | less -r' \
-      grep="grep --color=auto" \
-      diff="diff --color=auto" \
-      e="exit" \
-      r="ranger" \
-      cl="clear" \
-      dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ' \
-      dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ' \
-      g="git" \
-      v="$EDITOR" \
-      refshort="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-      ref="source ~/.bashrc" \
-      bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc" \
-      bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc" \
-      al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc" \
+alias sudo="sudo "
+alias s="sudo "
+_completion_loader sudo
+complete -F _sudo s
+alias ls="ls -h --color=auto --group-directories-first"
+alias ll='ls -al --color --group-directories-first | less -r'
+complete -F _longopt ll
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias p="pacman"
+_completion_loader pacman
+complete -o default -F _pacman p
+alias e="exit"
+alias r="ranger"
+alias cl="clear"
+alias m="man"
+_completion_loader man
+complete -F _man m
+alias g="git"
+_completion_loader git
+complete -o bashdefault -o default -o nospace -F _git g
+alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME '
+complete -o bashdefault -o default -o nospace -F _git dotfiles-git
+alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME '
+complete -o bashdefault -o default -o nospace -F _git dg
+alias v="$EDITOR"
+alias refshort="shortcuts >/dev/null; source ~/.config/shortcutrc"
+alias ref="source ~/.bashrc"
+alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\" "
+alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\" "
+alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && echo \"Updated aliases.\" || echo \"Failed to update aliases.\" "
+alias ccat="highlight --out-format=ans"
