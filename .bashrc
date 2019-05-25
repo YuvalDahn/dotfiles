@@ -23,9 +23,6 @@ alias PS1-short="PS1=\"\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u
 PROMPT_DIRTRIM=2 # disaplay only 2 dirs deep
 PS1-long
 
-# PATH
-export PATH=$PATH:$HOME/.scripts
-
 # Bi-Directional RTL support - requieres bicon
 # hack to launch bicon if not launched
 #if ! [[ "$(ps -p $(ps -p $(echo $$) -o ppid=) -o comm=)" =~ 'bicon'* ]]; then
