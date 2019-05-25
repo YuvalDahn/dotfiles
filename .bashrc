@@ -26,9 +26,6 @@ PS1-long
 # PATH
 export PATH=$PATH:$HOME/.scripts
 
-#Parameters for less: F - quit if not full screen, R - display colors, X - disable termcap
-export LESS="-XRF"
-
 # Bi-Directional RTL support - requieres bicon
 # hack to launch bicon if not launched
 #if ! [[ "$(ps -p $(ps -p $(echo $$) -o ppid=) -o comm=)" =~ 'bicon'* ]]; then
