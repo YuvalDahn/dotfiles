@@ -3,10 +3,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#enable vim-mode in terminal
+# enable vim-mode in terminal
 set -o vi
 
-#Allows you to cd into directory merely by typing the directory name.
+# Allows you to cd into directory merely by typing the directory name.
 shopt -s autocd
 
 # unlimited history file
@@ -17,6 +17,7 @@ export HISTSIZE=
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc" # Load command aliases
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc" # Load shortcut aliases
 
+# Prompt
 alias PS1-long="PS1=\"\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]\""
 alias PS1-short="PS1=\"\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]\""
 
