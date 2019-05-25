@@ -20,14 +20,14 @@ complete -F _man m
 alias g="git"
 _completion_loader git
 complete -o bashdefault -o default -o nospace -F _git g
-alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME '
+alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 complete -o bashdefault -o default -o nospace -F _git dotfiles-git
-alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME '
+alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 complete -o bashdefault -o default -o nospace -F _git dg
 alias v="$EDITOR"
 alias refshort="shortcuts >/dev/null; source ~/.config/shortcutrc"
 alias ref="source ~/.bashrc"
-alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\" "
-alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\" "
-alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && echo \"Updated aliases.\" || echo \"Failed to update aliases.\" "
+alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\""
+alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\""
+alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && echo \"Updated aliases.\" || echo \"Failed to update aliases.\""
 alias ccat="highlight --out-format=ans"
