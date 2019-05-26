@@ -8,7 +8,7 @@ alias ll='ls -al --color --group-directories-first | less -r'
 complete -F _longopt ll
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
-alias p="pacman"
+alias p="sudo pacman"
 _completion_loader pacman
 complete -o default -F _pacman p
 alias e="exit"
@@ -31,3 +31,6 @@ alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/sh
 alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\""
 alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && echo \"Updated aliases.\" || echo \"Failed to update aliases.\""
 alias ccat="highlight --out-format=ans"
+alias sc="sudo systemctl"
+_completion_loader systemctl
+complete -F _systemctl sc
