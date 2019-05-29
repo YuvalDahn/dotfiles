@@ -143,6 +143,19 @@ handle_image() {
                      -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
                 && exit 6 || exit 1;;
 
+	# Office Document (docx, pptx...)
+	application/vnd.openxmlformats-officedocument.*)
+		unoconv -f pdf -e PageRange=1-1 -o "${IMAGE_CACHE_PATH%.*}.pdf" "${FILE_PATH}"
+		pdftoppm -f 1 -l 1 \
+			 -scale-to-x 1920 \
+			 -scale-to-y -1 \
+			 -singlefile \
+			 -jpeg -tiffcompression jpeg \
+			 -- "${IMAGE_CACHE_PATH%.*}.pdf" "${IMAGE_CACHE_PATH%.*}" \
+		&& exit 6 || exit 1;;
+
+
+
         # Preview archives using the first image inside.
         # (Very useful for comic book collections for example.)
         # application/zip|application/x-rar|application/x-7z-compressed|\
