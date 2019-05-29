@@ -3,8 +3,9 @@ alias sudo="sudo "
 alias s="sudo "
 _completion_loader sudo
 complete -F _sudo s
+alias less="less -F"
 alias ls="ls -h --color=auto --group-directories-first"
-alias ll='ls -al --color --group-directories-first | less -r'
+alias ll='ls -Al --color --group-directories-first | less -r'
 complete -F _longopt ll
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
