@@ -4,6 +4,10 @@ export EDITOR="vim"
 export TERMINAL="termite"
 export BROWSER="firefox"
 export PAGER="less"
+export FILE="ranger"
+
+# set delay and rate of pressed button
+xset r rate 250 40
 
 # Parameters for less: F - quit if not full screen, R - display colors, X - disable termcap
 export LESS="-XR"
