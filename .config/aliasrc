@@ -28,10 +28,11 @@ complete -o bashdefault -o default -o nospace -F _git dg
 alias v="$EDITOR"
 alias refshort="shortcuts >/dev/null; source ~/.config/shortcutrc"
 alias ref="source ~/.bashrc"
-alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\""
-alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && echo \"Updated shortcuts.\" || echo \"Failed to update shortcuts.\""
-alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && echo \"Updated aliases.\" || echo \"Failed to update aliases.\""
+alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
+alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
+alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && notify-send \"Updated aliases.\" || notify-send \"Failed to update aliases.\""
 alias ccat="highlight --out-format=ans"
 alias sc="sudo systemctl"
 _completion_loader systemctl
 complete -F _systemctl sc
+alias get-keypresses="xev | grep \"keycode\""
