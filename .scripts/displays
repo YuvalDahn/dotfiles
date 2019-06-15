@@ -1,0 +1,4 @@
+#!/bin/sh
+ls $HOME/.screenlayout/ | dmenu -l 10 -p "Display Configuration: " | xargs -r -I{} sh $HOME/.screenlayout/{}
+feh --bg-scale '/home/yuvaldahn/Pictures/background.jpg'
+polybar_launch

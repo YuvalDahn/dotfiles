@@ -53,6 +53,17 @@ set $outer 5
 gaps inner $inner
 gaps outer $outer
 
+# ---Function Key Support---
+# choose display configuration using Fn+display which apperantly sends Start+p
+bindsym $mod+p exec --no-startup-id displays
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 -time 0 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 0 # decrease screen brightness
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
