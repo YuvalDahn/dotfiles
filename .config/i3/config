@@ -42,6 +42,17 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# disable window title bars
+for_window [class="^.*"] border pixel 2
+
+# --- i3-gaps settings ---
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+set $inner 15
+set $outer 5
+gaps inner $inner
+gaps outer $outer
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -69,6 +80,12 @@ bindsym $mod+Shift+Right move right
 # toggle split direction
 bindsym $mod+t split toggle
 
+# default gaps
+bindsym $mod+Shift+t gaps inner current set $inner; gaps outer current set $outer
+
+# no gaps
+bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -88,6 +105,12 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+Shift+a focus child
+
+# Gaps
+bindsym $mod+z		gaps outer current plus 5
+bindsym $mod+Shift+z	gaps outer current minus 5
+bindsym $mod+x		gaps inner current plus 5
+bindsym $mod+Shift+x	gaps inner current minus 5
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
