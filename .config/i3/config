@@ -133,6 +133,9 @@ bindsym $mod+Shift+x	gaps inner current minus 5
 bindsym $mod+b border normal
 bindsym $mod+Shift+b border pixel 2
 
+# Hide mode
+bindsym $mod+Shift+Delete exec --no-startup-id pactl set-sink-volume 0 -100% ; workspace 0; exec $term -e $FILE ; exec $term -e htop
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
