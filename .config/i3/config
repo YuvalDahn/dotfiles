@@ -32,6 +32,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec $term -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -105,6 +106,7 @@ bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -122,6 +124,12 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+Shift+a focus child
+
+# screenshots
+bindsym $mod+Print exec spectacle -o /tmp/Scrrenshot-$(date +%y.%m.%d-%H:%M:%S)
+bindsym Print exec spectacle -rb -o /tmp/Scrrenshot-$(date +%y.%m.%d-%H:%M:%S)
+bindsym Ctrl+Print exec spectacle -mb -o /tmp/Scrrenshot-$(date +%y.%m.%d-%H:%M:%S)
+bindsym Shift+Print exec spectacle -ab -o /tmp/Scrrenshot-$(date +%y.%m.%d-%H:%M:%S)
 
 # Gaps
 bindsym $mod+z		gaps outer current plus 5
@@ -234,4 +242,5 @@ exec_always --no-startup-id sleep .1 && feh --bg-scale "$HOME/Pictures/backgroun
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id nm-applet
 exec --no-startup-id spotify
+exec --no-startup-id firefox
 exec --no-startup-id polybar_launch
