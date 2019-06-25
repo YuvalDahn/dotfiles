@@ -368,10 +368,10 @@ menu-0-2 = sleep
 menu-0-2-exec = systemctl suspend
 
 menu-1-0 = reboot
-menu-1-0-exec = sudo reboot
+menu-1-0-exec = reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = poweroff
 
 [settings]
 screenchange-reload = true
