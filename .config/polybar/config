@@ -378,7 +378,7 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = python $HOME/.config/polybar/spotify_status.py -t 30 -p ,
+exec = python $HOME/.config/polybar/spotify_status.py -t 30 -p 
 format-underline = #1db954
 click-left=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 

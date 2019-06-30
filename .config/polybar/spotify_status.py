@@ -22,10 +22,10 @@ parser.add_argument(
 )
 parser.add_argument(
     '-p',
-    '--playpause',
+    '--pause',
     type=str,
-    metavar='play-pause indicator',
-    dest='play_pause'
+    metavar='pause indicator',
+    dest='pause'
 )
 parser.add_argument(
     '--font',
@@ -34,10 +34,10 @@ parser.add_argument(
     dest='font'
 )
 parser.add_argument(
-    '--playpause-font',
+    '--pause-font',
     type=str,
     metavar='the index of the font to use to display the playpause indicator',
-    dest='play_pause_font'
+    dest='pause_font'
 )
 
 
@@ -51,22 +51,22 @@ def fix_string(string):
         return string.encode('utf-8')
 
 # Default parameters
-output = fix_string(u'{play_pause} {artist}: {song}')
+output = fix_string(u'{artist}: {song}')
 trunclen = 25
-play_pause = fix_string(u'\u25B6,\u23F8') # first character is play, second is paused
+pause = fix_string(u'\u23F8') # character is pause
 playing = False
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font
-play_pause_font = args.play_pause_font
+pause_font = args.pause_font
 
 # parameters can be overwritten by args
 if args.trunclen is not None:
     trunclen = args.trunclen
 if args.custom_format is not None:
     output = args.custom_format
-if args.play_pause is not None:
-    play_pause = args.play_pause
+if args.pause is not None:
+    pause = args.pause
 
 try:
     session_bus = dbus.SessionBus()
@@ -85,18 +85,13 @@ try:
 
     # Handle play/pause label
 
-    play_pause = play_pause.split(',')
-
     if status == 'Playing':
-        playing= True
-        play_pause = play_pause[0]
-    elif status == 'Paused':
-        play_pause = play_pause[1]
-    else:
-        play_pause = str()
+        playing = True
+    elif status != 'Paused':
+        pause = str()
 
-    if play_pause_font:
-        play_pause = label_with_font.format(font=play_pause_font, label=play_pause)
+    if pause_font:
+        pause = label_with_font.format(font=pause_font, label=pause)
 
     # Handle main label
     if playing:
@@ -116,9 +111,9 @@ try:
                 artist = label_with_font.format(font=font, label=artist)
                 song = label_with_font.format(font=font, label=song)
     
-            print(output.format(artist=artist, song=song, play_pause=play_pause))
+            print(output.format(artist=artist, song=song))
     else:
-        print(play_pause)
+        print(pause)
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):
