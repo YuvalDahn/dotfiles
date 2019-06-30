@@ -36,3 +36,4 @@ alias sc="sudo systemctl"
 _completion_loader systemctl
 complete -F _systemctl sc
 alias get-keypresses="xev | grep \"keycode\""
+alias refupdate="reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
