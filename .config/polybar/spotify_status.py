@@ -54,6 +54,7 @@ def fix_string(string):
 output = fix_string(u'{play_pause} {artist}: {song}')
 trunclen = 25
 play_pause = fix_string(u'\u25B6,\u23F8') # first character is play, second is paused
+playing = False
 
 label_with_font = '%{{T{font}}}{label}%{{T-}}'
 font = args.font
@@ -87,6 +88,7 @@ try:
     play_pause = play_pause.split(',')
 
     if status == 'Playing':
+        playing= True
         play_pause = play_pause[0]
     elif status == 'Paused':
         play_pause = play_pause[1]
@@ -97,24 +99,26 @@ try:
         play_pause = label_with_font.format(font=play_pause_font, label=play_pause)
 
     # Handle main label
+    if playing:
+        artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else ''
+        song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else ''
 
-    artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else ''
-    song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else ''
+        if not artist and not song:
+            print('')
+        else:
+            if len(song) > trunclen:
+                song = song[0:trunclen]
+                song += '...'
+                if ('(' in song) and (')' not in song):
+                    song += ')'
 
-    if not artist and not song:
-        print('')
+            if font:
+                artist = label_with_font.format(font=font, label=artist)
+                song = label_with_font.format(font=font, label=song)
+    
+            print(output.format(artist=artist, song=song, play_pause=play_pause))
     else:
-        if len(song) > trunclen:
-            song = song[0:trunclen]
-            song += '...'
-            if ('(' in song) and (')' not in song):
-                song += ')'
-
-        if font:
-            artist = label_with_font.format(font=font, label=artist)
-            song = label_with_font.format(font=font, label=song)
-
-        print(output.format(artist=artist, song=song, play_pause=play_pause))
+        print(play_pause)
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):
