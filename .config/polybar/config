@@ -60,7 +60,7 @@ font-3 = NotoEmoji:scale=12;
 
 modules-left = i3 spotify
 modules-center = xwindow
-modules-right = mpd xbacklight pulseaudio xkeyboard memory wlan eth battery date powermenu
+modules-right = mpd xbacklight pulseaudio xkeyboard memory wlan eth updates-arch battery date powermenu
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 2
@@ -381,6 +381,12 @@ format = <label>
 exec = python $HOME/.config/polybar/spotify_status.py -t 30 -p 
 format-underline = #1db954
 click-left=dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+[module/updates-arch]
+type = custom/script
+format-underline = #ffff00
+exec = $HOME/.config/polybar/updates-arch-combined.sh
+interval = 600
 
 [settings]
 screenchange-reload = true
