@@ -7,7 +7,7 @@ export PAGER="less"
 export FILE="ranger"
 
 # set delay and rate of pressed button
-xset r rate 250 40
+[ ! -z "$DISPLAY" ] && xset r rate 250 40
 
 # Parameters for less: F - quit if not full screen, R - display colors, X - disable termcap
 export LESS="-XR"
