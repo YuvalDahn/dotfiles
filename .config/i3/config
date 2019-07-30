@@ -238,11 +238,13 @@ mode "$mode_launcher" {
         bindsym $mod+o mode "default"
 }
 
-set $mode_editor Edit: [i]3-config [p]olybar [R]EADME
+set $mode_editor Edit: [i]3-config [b]ashrc [p]olybar [R]EADME [v]imrc
 bindsym $mod+i mode "$mode_editor"
 
 mode "$mode_editor" {
 	bindsym i exec $term -e "vim $HOME/.config/i3/config" ; mode "default"
+	bindsym v exec $term -e "vim $HOME/.vimrc" ; mode "default"
+	bindsym b exec $term -e "vim $HOME/.bashrc" ; mode "default"
 	bindsym p exec $term -e "vim $HOME/.config/polybar/config" ; mode "default"
 	bindsym r exec typora $HOME/README.md ; mode "default"
 	bindsym R exec typora $HOME/README.md ; mode "default"
