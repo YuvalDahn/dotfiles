@@ -194,6 +194,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# Open OPENCV windows in floating mode
+for_window [title="OpenCV"] floating enable
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -256,10 +259,11 @@ mode "$mode_editor" {
 }
 
 exec --no-startup-id compton
-exec --no-startup-id $HOME/.screenlayout/three-displays
+exec --no-startup-id $HOME/.scripts/screenlayout/three-hdmi-middle
 exec_always --no-startup-id sleep .1 && feh --bg-scale "$HOME/Pictures/background.jpg"
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id nm-applet
 exec --no-startup-id spotify
 exec --no-startup-id firefox
 exec_always --no-startup-id polybar_launch
+
