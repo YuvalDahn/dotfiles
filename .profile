@@ -19,3 +19,5 @@ export PATH=$HOME/.scripts:$PATH
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
 [ -f ~/.bashrc ] && source "$HOME/.bashrc"
+
+[[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
