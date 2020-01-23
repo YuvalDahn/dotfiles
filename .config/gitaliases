@@ -14,7 +14,8 @@
 	cma = commit --amend
 	cmae = commit --amend --no-edit
 	p = push
-	pf = push --force
+	pf = push --force-with-lease
+	push-hard = push --force-with-lease
 	po = push origin
 	pl = pull
 	plo = pull origin
