@@ -58,9 +58,10 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = NotoEmoji:scale=12;
 
-modules-left = i3 spotify
-modules-center = xwindow
-modules-right = mpd xbacklight pulseaudio xkeyboard memory wlan eth updates-arch battery date powermenu
+; avialble modules: mpd
+modules-left = i3 xwindow spotify
+modules-center =
+modules-right = xbacklight alsa xkeyboard memory wlan eth updates-arch battery date powermenu
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 2
