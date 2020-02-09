@@ -31,9 +31,9 @@ alias ref="source ~/.bashrc"
 alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
 alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
 alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && notify-send \"Updated aliases.\" || notify-send \"Failed to update aliases.\""
-alias ccat="highlight --out-format=ans"
+alias ccat="highlight --out-format=xterm256"
 alias sc="sudo systemctl"
 _completion_loader systemctl
 complete -F _systemctl sc
 alias get-keypresses="xev | grep \"keycode\""
-alias refupdate="sudo reflector --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias refupdate="sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
