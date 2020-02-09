@@ -2,8 +2,8 @@
 " According to: https://stackoverflow.com/questions/30247603/making-vim-show-a-git-diff-with-colors-like-a-git-diff-command-red-delete-gree
 " Add diff part using:
 " $ git config --global commit.verbose true
-hi diffAdded cterm=bold ctermfg=DarkGreen
-hi diffRemoved cterm=bold ctermfg=DarkRed
+hi diffAdded ctermfg=LightGreen
+hi diffRemoved ctermfg=167
 
 hi diffFile cterm=NONE ctermfg=DarkBlue
 hi gitcommitDiff cterm=NONE ctermfg=DarkBlue
