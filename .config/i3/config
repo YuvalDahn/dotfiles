@@ -233,6 +233,7 @@ bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
 	bindsym f exec firefox; mode "default"
+	bindsym Shift+f exec firefox --private-window; mode "default"
 	bindsym r exec $term -e ranger; mode "default"
 	bindsym h exec $term -e htop; mode "default"
 	bindsym m exec $term -e alsamixer; mode "default"
