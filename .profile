@@ -6,6 +6,10 @@ export BROWSER="firefox"
 export PAGER="less"
 export FILE="ranger"
 
+export LOG_FOLDER="$HOME/.local/share/logs"
+export LOG_I3="$LOG_FOLDER/i3.log"
+export LOG_POLYBAR="$LOG_FOLDER/polybar.log"
+
 # set delay and rate of pressed button
 [ ! -z "$DISPLAY" ] && xset r rate 250 40
 

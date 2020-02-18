@@ -1,4 +1,4 @@
 #!/bin/sh
-ls $HOME/.scripts/screenlayout/ | dmenu -l 10 -p "Display Configuration: " | xargs -r -I{} sh $HOME/.scripts/screenlayout/{}
+ls $HOME/.scripts/screenlayout/ | dmenu -l 10 -p "Display Configuration: " | xargs -r -i sh $HOME/.scripts/screenlayout/{}
 feh --bg-scale '/home/yuvaldahn/Pictures/background.jpg'
 polybar_launch
