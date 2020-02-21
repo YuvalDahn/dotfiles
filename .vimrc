@@ -1,40 +1,74 @@
 " General
 let mapleader =";"
-set nocompatible
 set number
 set relativenumber
 set wrap
 set linebreak
 syntax on
 set autoindent
-set tabstop=4
+filetype plugin indent on
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 set showcmd
-filetype plugin on
+set splitright
+set splitbelow
+set wildmenu
+set incsearch
 
-map <C-j> <C-w>j
-map <C-h> <C-w>h
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'SirVer/ultisnips'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'mboughaba/i3config.vim'
+call plug#end()
 
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" vim-go options
+let g:go_fmt_command="goimports"
+let g:go_snippet_engine=""
+" use gopls
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
-inoremap <Space><Space> <Esc>/<++><CR>c4l
+" airline config
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets='<S-tab>'
+let g:UltiSnipsJumpForwardTrigger="<Leader>j"
+let g:UltiSnipsJumpBackwardTrigger="<Leader>k"
+let g:UltiSnipsEditSplit="vertical"
+map <Leader>ue :UltiSnipsEdit<CR>
+
+" Remap arrow keys to window management
+noremap <Up> <C-w>k
+noremap <Down> <C-w>j
+noremap <Left> <C-w>h
+noremap <Right> <C-w>l
+noremap <S-Up> <C-w>K
+noremap <S-Down> <C-w>J
+noremap <S-Left> <C-w>H
+noremap <S-Right> <C-w>L
+
+" Delete entire file
 inoremap <Leader>D <Esc>ggdGi
 noremap <Leader>D ggdG
 
-" C Snippets
-autocmd FileType c inoremap <Leader>i if()<CR>{<CR><Tab><++><CR><BS>}<Esc>3kf(a
-autocmd FileType c inoremap <Leader>f for( ;i < <++> ;++i<++>)<CR>{<CR><Tab><++><CR><BS>}<Esc>3kf(aint i = 0
-
-" Bash Snippets
-autocmd FileType sh inoremap <Leader>i if <CR>then<CR><Tab><++><CR><BS>fi<Esc>3kA
-autocmd FileType sh inoremap <Leader>f for <++> in <++><CR>do<CR><Tab><++><CR><BS>done<Esc>3k0/<++><CR>c4l
-
 " Go Snippets
-autocmd FileType go map <Leader>r :!go build && 
-autocmd FileType go inoremap <Leader>m must()<CR><++><Esc>kf(a
+augroup go
+    autocmd!
+    " Show by default 4 spaces for a tab
+    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+    autocmd FileType go nnoremap <Leader>n :cnext<CR>
+    autocmd FileType go nnoremap <Leader>N :cprevious<CR>
+    autocmd FileType go nnoremap <Leader>f :GoFmt<CR>
+    autocmd FileType go nnoremap <Leader>b :GoBuild<CR>
+    autocmd FileType go nnoremap <Leader>r :!go build && sudo ./locker /bin/bash
+augroup END
+
