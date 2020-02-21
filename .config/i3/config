@@ -111,6 +111,11 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
 
+# Sticky windows
+bindsym $mod+Shift+s sticky toggle
+#for_window [title="Picture-in-Picture"] exec --no-startup-id "sleep 0.05; i3-msg 'sticky enable; move position 1250px 21px; resize grow width 25px; resize grow height 15px'"
+for_window [title="Picture-in-Picture"] exec --no-startup-id "sleep 0.05; i3-msg 'sticky enable; move position 0px 21px; resize grow width 25px; resize grow height 15px'"
+
 # change focus between tiling / floating windows
 bindsym $mod+Mod1+f focus mode_toggle
 
