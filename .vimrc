@@ -59,14 +59,15 @@ noremap <S-Right> <C-w>L
 inoremap <Leader>D <Esc>ggdGi
 noremap <Leader>D ggdG
 
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>N :cprevious<CR>
+
 " Go Snippets
-augroup go
+augroup golang
     autocmd!
     " Show by default 4 spaces for a tab
     autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
-    autocmd FileType go nnoremap <Leader>n :cnext<CR>
-    autocmd FileType go nnoremap <Leader>N :cprevious<CR>
     autocmd FileType go nnoremap <Leader>f :GoFmt<CR>
     autocmd FileType go nnoremap <Leader>b :GoBuild<CR>
     autocmd FileType go nnoremap <Leader>r :!go build && sudo ./locker /bin/bash
