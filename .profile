@@ -25,4 +25,4 @@ export PATH="$PATH:$HOME/go/bin"
 
 [ -f ~/.bashrc ] && . "$HOME/.bashrc"
 
-[[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ ! $DISPLAY && $XDG_VTNR -eq 1 && -f ~/.xinitrc ]] && exec startx
