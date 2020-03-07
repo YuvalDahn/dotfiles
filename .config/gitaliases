@@ -1,6 +1,5 @@
 # add to ~/.gitconfig
-#[include]
-#	path = ~/.config/gitaliases
+# $ git config --global include.path "~/.config/gitaliases"
 [alias]
 	s = status
 	ss = status -s
