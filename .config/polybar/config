@@ -61,7 +61,7 @@ font-3 = NotoEmoji:scale=12;
 ; avialble modules: mpd
 modules-left = i3 xwindow spotify
 modules-center =
-modules-right = xbacklight alsa xkeyboard memory wlan eth updates-arch battery date powermenu
+modules-right = xbacklight pulseaudio xkeyboard memory wlan eth updates-arch battery date powermenu
 
 tray-position = ${env:TRAY_POSITION:right}
 tray-padding = 2

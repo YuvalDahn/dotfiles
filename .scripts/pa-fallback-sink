@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pacmd info | grep 'Default sink' | sed 's/Default sink name: //'

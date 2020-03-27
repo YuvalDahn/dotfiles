@@ -56,14 +56,14 @@ gaps outer $outer
 # choose display configuration using Fn+display which apperantly sends Start+p
 bindsym $mod+p exec --no-startup-id displays
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pa-fallback-sink) +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pa-fallback-sink) -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pa-fallback-sink) toggle # mute sound
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 -time 0 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 0 # decrease screen brightness
 # Spotify media play/paus, prev, next
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause >/dev/null 2>&1 || spotify
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioStop exec --no-startup-id pkill ^[Ss]potify$
@@ -189,7 +189,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+minus move container to workspace $ws0
 
 # Hide mode
-bindsym $mod+Shift+Delete exec --no-startup-id pactl set-sink-volume 0 -100% ; workspace $ws0; exec $term -e $FILE ; exec $term -e htop
+bindsym $mod+Shift+Delete exec --no-startup-id pactl set-sink-volume $(pa-fallback-sink) 0% ; workspace $ws0; exec $term -e $FILE ; exec $term -e htop
 bindsym $mod+mouse2 workspace $ws0; exec $term -e $FILE ; exec $term -e htop
 
 # reload the configuration file
