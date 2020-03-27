@@ -3,8 +3,9 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 # vim: filetype=i3config
 
-exec_always --no-startup-id echo "------- [$(date)] Starting i3 -------"
+exec_always --no-startup-id echo "------- [$(date  --rfc-3339=seconds)] Starting i3 -------"
 set $mod Mod4
+set $mod-both Mod1+Mod4
 set $term --no-startup-id $TERMINAL
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -117,7 +118,7 @@ bindsym $mod+Shift+s sticky toggle
 for_window [title="Picture-in-Picture"] exec --no-startup-id "sleep 0.05; i3-msg 'sticky enable; move position 0px 21px; resize grow width 25px; resize grow height 15px'"
 
 # change focus between tiling / floating windows
-bindsym $mod+Mod1+f focus mode_toggle
+bindsym $mod-both+f focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -197,11 +198,16 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec --no-startup-id "prompt 'Exit i3?' 'i3-msg exit'"
+# Reboot
+bindsym $mod+Shift+w exec --no-startup-id "prompt 'Reboot?' 'reboot'"
+# Shutdown
+bindsym $mod+Ctrl+w exec --no-startup-id "prompt 'Shutdown?' 'shutdown now'"
 
 # Open OPENCV windows in floating mode
 for_window [title="OpenCV"] floating enable
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -226,11 +232,8 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
 set $mode_launcher Launch: [f]irefox [r]anger [h]top alsa[m]ixer [s]potify [n]emo
 bindsym $mod+o mode "$mode_launcher"
-
 mode "$mode_launcher" {
 	bindsym f exec firefox; mode "default"
 	bindsym Shift+f exec firefox --private-window; mode "default"
@@ -248,7 +251,6 @@ mode "$mode_launcher" {
 
 set $mode_editor Edit: [i]3-config [b]ashrc [p]olybar [R]EADME [v]imrc
 bindsym $mod+i mode "$mode_editor"
-
 mode "$mode_editor" {
 	bindsym i exec $term -e "vim $HOME/.config/i3/config" ; mode "default"
 	bindsym v exec $term -e "vim $HOME/.vimrc" ; mode "default"
