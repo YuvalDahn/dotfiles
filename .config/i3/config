@@ -5,6 +5,7 @@
 
 exec_always --no-startup-id echo "------- [$(date  --rfc-3339=seconds)] Starting i3 -------"
 set $mod Mod4
+set $alt Mod1
 set $mod-both Mod1+Mod4
 set $term --no-startup-id $TERMINAL
 
@@ -45,8 +46,8 @@ for_window [class="^.*"] border pixel 2
 # --- i3-gaps settings ---
 # Only enable gaps on a workspace when there is at least one container
 smart_gaps on
-set $inner 15
-set $outer 5
+set $inner 5
+set $outer 0
 gaps inner $inner
 gaps outer $outer
 
@@ -154,8 +155,13 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace $ws1 output DVI-I-1-1
+
+workspace $ws5 output eDP1
+
 workspace $ws10 output DP2
 for_window [class="Spotify"] move to workspace $ws10
+for_window [title="System Monitor"] move to workspace $ws10
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -188,7 +194,8 @@ bindsym $mod+Shift+minus move container to workspace $ws0
 
 # Hide mode
 bindsym $mod+Shift+Delete exec --no-startup-id pactl set-sink-volume $(pa-fallback-sink) 0% ; workspace $ws0; exec $term -e $FILE ; exec $term -e htop
-bindsym $mod+mouse2 workspace $ws0; exec $term -e $FILE ; exec $term -e htop
+bindsym $mod+grave workspace $ws0; exec $term -e $FILE ; exec $term -e htop
+bindsym $mod+Shift+grave exec --no-startup-id pactl set-sink-volume $(pa-fallback-sink) 0% ; workspace $ws0; exec $term -e $FILE ; exec $term -e htop
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -235,11 +242,12 @@ bindsym $mod+o mode "$mode_launcher"
 mode "$mode_launcher" {
 	bindsym f exec firefox; mode "default"
 	bindsym Shift+f exec firefox --private-window; mode "default"
+	bindsym n exec nemo; mode "default"
+	bindsym Shift+n exec --no-startup-id nemo -n; mode "default"
 	bindsym r exec $term -e ranger; mode "default"
 	bindsym h exec $term -e htop; mode "default"
 	bindsym m exec $term -e alsamixer; mode "default"
 	bindsym s exec --no-startup-id spotify; mode "default"
-	bindsym n exec nemo; mode "default"
 
         # back to normal: Enter or Escape or $mod+o
         bindsym Return mode "default"
@@ -265,10 +273,13 @@ mode "$mode_editor" {
 
 # Command shortcuts
 bindsym $mod+v exec pavucontrol
+bindsym $mod+Shift+v exec --no-startup-id gnome-system-monitor ; workspace $ws10
 
-exec --no-startup-id picom
+exec --no-startup-id picom --backend xrender
+#exec --no-startup-id picom --backend xr_glx_hybrid
 exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/Pictures/background.jpg"
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id nm-applet
 exec --no-startup-id polybar_launch
+exec --no-startup-id discord --start-minimized
 
