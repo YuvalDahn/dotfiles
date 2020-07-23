@@ -1,0 +1,3 @@
+#!/bin/bash
+DESKTOP_SESSION=i3 wallpaper-reddit --startup --lottery
+wallpaper-reddit --save

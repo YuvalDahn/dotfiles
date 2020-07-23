@@ -277,7 +277,7 @@ bindsym $mod+Shift+v exec --no-startup-id gnome-system-monitor ; workspace $ws10
 
 exec --no-startup-id picom --backend xrender
 #exec --no-startup-id picom --backend xr_glx_hybrid
-exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/Pictures/background.jpg"
+exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/.wallpaper/wallpaper.jpg"
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id nm-applet
 exec --no-startup-id polybar_launch
