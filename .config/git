@@ -1,5 +1,7 @@
 # add to ~/.gitconfig
-# $ git config --global include.path "~/.config/gitaliases"
+# $ git config --global include.path "~/.config/git"
+[commit]
+	verbose = true
 [alias]
 	s = status
 	ss = status -s
