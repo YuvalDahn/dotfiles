@@ -115,6 +115,7 @@ bindsym $mod+Shift+f floating toggle
 # Sticky windows
 bindsym $mod+Shift+s sticky toggle
 for_window [title="Picture-in-Picture"] exec --no-startup-id "sleep 0.05; i3-msg 'sticky enable; move position 0px 21px; resize grow width 25px; resize grow height 15px'"
+bindsym $mod+Shift+p floating enable; sticky enable; move position 0px 21px; resize set width 500px
 
 # change focus between tiling / floating windows
 bindsym $mod-both+f focus mode_toggle
@@ -156,9 +157,13 @@ set $ws9 "9"
 set $ws10 "10"
 
 workspace $ws1 output DVI-I-1-1
+workspace $ws2 output DVI-I-1-1
+workspace $ws3 output DVI-I-1-1
 
 workspace $ws5 output eDP1
+workspace $ws6 output eDP1
 
+workspace $ws9 output DP2
 workspace $ws10 output DP2
 for_window [class="Spotify"] move to workspace $ws10
 for_window [title="System Monitor"] move to workspace $ws10
@@ -170,7 +175,7 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
+bindsym $mod+7 workspace $ws7; layout tabbed
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
@@ -211,6 +216,9 @@ bindsym $mod+Ctrl+w exec --no-startup-id "prompt 'Shutdown?' 'shutdown now'"
 # Open OPENCV windows in floating mode
 for_window [title="OpenCV"] floating enable
 
+# float jetbrains loading screens
+for_window [class="jetbrains-.*" title="win0"] floating enable border none
+
 # resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
@@ -237,13 +245,14 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-set $mode_launcher Launch: [f]irefox [r]anger [h]top alsa[m]ixer [s]potify [n]emo
+set $mode_launcher Launch: [f]irefox [r]anger [h]top alsa[m]ixer [s]potify [n]emo [p]cmanfm
 bindsym $mod+o mode "$mode_launcher"
 mode "$mode_launcher" {
 	bindsym f exec firefox; mode "default"
 	bindsym Shift+f exec firefox --private-window; mode "default"
 	bindsym n exec nemo; mode "default"
 	bindsym Shift+n exec --no-startup-id nemo -n; mode "default"
+	bindsym p exec pcmanfm; mode "default"
 	bindsym r exec $term -e ranger; mode "default"
 	bindsym h exec $term -e htop; mode "default"
 	bindsym m exec $term -e alsamixer; mode "default"
@@ -258,10 +267,10 @@ mode "$mode_launcher" {
 set $mode_editor Edit: [i]3-config [b]ashrc [p]olybar [R]EADME [v]imrc
 bindsym $mod+i mode "$mode_editor"
 mode "$mode_editor" {
-	bindsym i exec $term -e "vim $HOME/.config/i3/config" ; mode "default"
-	bindsym v exec $term -e "vim $HOME/.vimrc" ; mode "default"
-	bindsym b exec $term -e "vim $HOME/.bashrc" ; mode "default"
-	bindsym p exec $term -e "vim $HOME/.config/polybar/config" ; mode "default"
+	bindsym i exec $term -e vim $HOME/.config/i3/config ; mode "default"
+	bindsym v exec $term -e vim $HOME/.vimrc ; mode "default"
+	bindsym b exec $term -e vim $HOME/.bashrc ; mode "default"
+	bindsym p exec $term -e vim $HOME/.config/polybar/config ; mode "default"
 	bindsym r exec typora $HOME/README.md ; mode "default"
 	bindsym R exec typora $HOME/README.md ; mode "default"
 
@@ -274,10 +283,11 @@ mode "$mode_editor" {
 # Command shortcuts
 bindsym $mod+v exec pavucontrol
 bindsym $mod+Shift+v exec --no-startup-id gnome-system-monitor ; workspace $ws10
+bindsym $mod+Ctrl+h exec --no-startup-id termite ; exec --no-startup-id "sleep 0.5; i3-msg 'floating enable; move position 0px -300px; resize shrink height 150px'"
 
 exec --no-startup-id picom --backend xrender
 #exec --no-startup-id picom --backend xr_glx_hybrid
-exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/.wallpaper/wallpaper.jpg"
+exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/.local/share/wallpaper-reddit/wallpaper.jpg"
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id nm-applet
 exec --no-startup-id polybar_launch
