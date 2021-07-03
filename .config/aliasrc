@@ -1,40 +1,28 @@
 #!/bin/sh
 alias sudo="sudo "
 alias s="sudo "
-_completion_loader sudo
-complete -F _sudo s
 alias less="less -F"
 alias ls="ls -h --color=auto --group-directories-first"
 alias ll='ls -Al --color --group-directories-first | less -r'
-complete -F _longopt ll
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias p="sudo pacman"
-_completion_loader pacman
-complete -o default -F _pacman p
 alias e="exit"
 alias r="ranger"
 alias cl="clear"
 alias m="man"
-_completion_loader man
-complete -F _man m
 alias g="git"
-_completion_loader git
-complete -o bashdefault -o default -o nospace -F _git g
 alias dotfiles-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-complete -o bashdefault -o default -o nospace -F _git dotfiles-git
 alias dg='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-complete -o bashdefault -o default -o nospace -F _git dg
 alias v="$EDITOR"
 alias refshort="shortcuts >/dev/null; source ~/.config/shortcutrc"
 alias ref="source ~/.bashrc"
 alias bf="$EDITOR ~/.config/bmfiles && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
 alias bd="$EDITOR ~/.config/bmdirs && shortcuts >/dev/null; source ~/.config/shortcutrc && notify-send \"Updated shortcuts.\" || notify-send \"Failed to update shortcuts.\""
 alias al="$EDITOR ~/.config/aliasrc; source ~/.config/aliasrc && notify-send \"Updated aliases.\" || notify-send \"Failed to update aliases.\""
-alias ccat="highlight --out-format=xterm256"
 alias sc="sudo systemctl"
-_completion_loader systemctl
-complete -F _systemctl sc
 alias get-keypresses="xev | grep \"keycode\""
 alias refupdate="sudo reflector --verbose --latest 200 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 alias homeserver="TERM=xterm-256color ssh yuvaldahn@homeserver -t \"tmux new -A -s ssh_tmux\""
+alias homeservert="TERM=xterm-256color ssh yuvaldahn@homeserver"
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
