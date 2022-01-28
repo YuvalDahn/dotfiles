@@ -105,7 +105,7 @@ bindsym $mod+f fullscreen toggle
 bindsym F11 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -113,7 +113,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+f floating toggle
 
 # Sticky windows
-bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Ctrl+s sticky toggle
 for_window [title="Picture-in-Picture"] exec --no-startup-id "sleep 0.05; i3-msg 'sticky enable; move position 0px 21px; resize grow width 25px; resize grow height 15px'"
 bindsym $mod+Shift+p floating enable; sticky enable; move position 0px 21px; resize set width 500px
 
@@ -125,6 +125,9 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+Shift+a focus child
+
+# Open notification center
+bindsym $mod+s exec --no-startup-id "kill -s USR1 $(pidof deadd-notification-center)"
 
 # screenshots
 bindsym $mod+Print exec spectacle -o /tmp/Scrrenshot-$(date +%y.%m.%d-%H:%M:%S)
@@ -288,7 +291,7 @@ bindsym $mod+Ctrl+h exec --no-startup-id termite ; exec --no-startup-id "sleep 0
 exec --no-startup-id picom --backend xrender
 #exec --no-startup-id picom --backend xr_glx_hybrid
 exec_always --no-startup-id sleep .3 && feh --bg-scale "$HOME/.local/share/wallpaper-reddit/wallpaper.jpg"
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id deadd-notification-center
 exec --no-startup-id nm-applet
 exec --no-startup-id polybar_launch
 exec --no-startup-id discord --start-minimized
