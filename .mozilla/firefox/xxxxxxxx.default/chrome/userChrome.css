@@ -1,0 +1,24 @@
+/* Squash tab bar to 6px unless a tab is hovered */
+#TabsToolbar, 
+#TabsToolbar .tabbrowser-tab {
+  height: 29px !important; /* 29px compact, 33px normal, YMMV */
+  min-height: 29px !important;
+  max-height: 29px !important;
+  transition: all 0.5s ease-in-out;
+} 
+#TabsToolbar:not(:hover), 
+#TabsToolbar:not(:hover) .tabbrowser-tab[selected] {
+  height: 6px !important;
+  min-height: 6px !important;
+  max-height: 6px !important;
+  transition: all 0.5s ease-in-out;
+}
+#TabsToolbar:not(:hover) .tabbrowser-tab[selected] .tab-content {
+  display: none;
+}
+
+/* Prevent tab overflow as long as possible without making them hard to click */
+.tabbrowser-tab {
+  min-width: 1em !important;
+  clip-width: 1em !important;
+}
