@@ -6,7 +6,7 @@
 # Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
 
 pkgname=dmenu
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc='Generic menu for X'
 url='https://tools.suckless.org/dmenu/'
@@ -17,11 +17,11 @@ depends=('sh' 'glibc' 'coreutils' 'libx11' 'libxinerama' 'libxft' 'freetype2' 'f
 source=(https://dl.suckless.org/tools/dmenu-${pkgver}.tar.gz
         https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-5.0.diff
         https://tools.suckless.org/dmenu/patches/highlight/dmenu-highlight-4.9.diff
-        https://tools.suckless.org/dmenu/patches/mouse-support/dmenu-mousesupport-5.0.diff)
-sha512sums=('2b6a7cdf5aefc5e7ca7a4944883c3c16ee6f5005d2a96b61482d4899ad395f9cb8926907681d88b9df3e1188cf421dad4cc17e343b752f6cb8b161d33384b3f3'
+        https://tools.suckless.org/dmenu/patches/mouse-support/dmenu-mousesupport-5.1.diff)
+sha512sums=('2f950c30e15880e6081e04d73dd0cf8f402f52d793a77d22c3f10739bfed6222a9c4e7ec8eb3fc676422fea09e30b8cf9789f67b276b22c398c96f5ed3b56453'
             '82c75d80e86fdc51b67f1d5dcc0ca4d26541c0d096e212e41e855cbec39361c5db1295cead54e5dd68a5dd0f0478f81855f1e3b2ec174601316b472dc1227bbe'
             '1db56b7c59e89e0925b2d6d2ce04db26cdf3dec32e80ad7c16c4afb92e733e83f5b8fd15eb5f3b77abb345decae1adb27d7a3662ad426d6e8edff5f98fa9e5e4'
-            '14fa4282c9bb5a538ba3070c86b0f914df6013d4f0ab4d6eb6786a8b10158b1e1eb3d632deb4c54012e2040f7684131d658abd6c1ff27b2f4594da6db6f3291c')
+            '777dd2aeba4725bf4c6adff3bf510f6eb6bf1699db06897fed2576f1162eb94e1e581c8b0d02ad3beebe5491b9631baf873f67aa8926d676f5c8b493dc6be1d7')
 
 prepare() {
   cd ${pkgname}-${pkgver}
