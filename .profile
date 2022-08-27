@@ -5,6 +5,7 @@ export TERMINAL="alacritty"
 export BROWSER="firefox"
 export PAGER="less"
 export FILE="ranger"
+export SUDO_ASKPASS=/home/yuvaldahn/.scripts/dmenupass
 
 export LOG_FOLDER="$HOME/.local/share/logs"
 export LOG_I3="$LOG_FOLDER/i3.log"
